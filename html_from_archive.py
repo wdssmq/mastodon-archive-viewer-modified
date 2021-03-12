@@ -51,18 +51,20 @@ for status in statuses:
 
 outfile = open("processed_archive.html", "w", encoding='utf-8')
 styleSheet = "<style>\
-.status { width: 54ch; position: relative; min-height: 128px; margin:auto auto 4em auto; border: 1px solid #999; border-radius: 16px; padding:8px; background: rgba(0,0,0,0.75);}\
-.status::before{ content: url('avatar.png'); position: absolute; right: 100%; }\
+.status { width: 54ch; position: relative; min-height: 128px; margin: 1em auto 1em; border: 1px solid #999; border-radius: 16px; padding:8px; background: rgba(0,0,0,0.75);}\
+/** .status::before{ content: url('avatar.png'); position: absolute; right: 100%; } **/\
 .status__summary { width: 100%; background: #333 }\
 .status__summary::after {content: '[Click to Open]';display: block;}\
 .status__date { text-align: right; }\
-.status__content { }\
+.status__content { word-break: break-all; }\
 .status__media { width:100%; }\
 .status__image { max-width: 100%; width:100%; min-width:100%; }\
-#header {background: rgba(0,0,0,0.75);text-align: center;padding-bottom: 16px;}\
-body { margin:0;background:#333; background-image: url('header.png'); background-size: cover; background-attachment: fixed; color: #fff1e8; line-height: 1.4;}\
-* {box-sizing: border-box;}\
+#header {background: rgba(0,0,0,0.75);text-align: center;padding: 16px 0;}\
+body { margin:0;background:#333; background-image: url('header.jpg'); background-size: cover; background-attachment: fixed; color: #fff1e8; line-height: 1.4;}\
+* { box-sizing: border-box; }\
 a { color: rgb(150,255,140) }\
+p { margin: 0 }\
+p:not(:last-child) { margin-bottom: 1.2em }\
 </style>"
 outfile.write("<!DOCTYPE html><html>\
 	<head>\
@@ -72,7 +74,7 @@ outfile.write("<!DOCTYPE html><html>\
 outfile.write(styleSheet)
 outfile.write("</head><body>\
 	<section id='header'>\
-		<img src='avatar.png'>\
+		<img width='128' height='128' src='avatar.png'>\
 		<div id=preferred-name>{0}</div>\
 		<a id=user-name>{1}</a>\
 		<div id='actor-summary'>{2}</div>\
