@@ -1,8 +1,8 @@
 import json
 from os import path
-with open("outbox.json", "r") as outbox_file:
+with open("outbox.json", "rb") as outbox_file:
     outbox = json.loads(outbox_file.read())
-with open("actor.json", "r") as actor_file:
+with open("actor.json", "rb") as actor_file:
     actor = json.loads(actor_file.read())
 # map the outbox down to the actual objects
 statuses = [status.get("object") for status in outbox.get("orderedItems")]
@@ -49,7 +49,7 @@ for status in statuses:
 			</article>".format(date, htmlContent, images)
         articles.append(article)
 
-outfile = open("processed_archive.html", "w")
+outfile = open("processed_archive.html", "w", encoding='utf-8')
 styleSheet = "<style>\
 .status { width: 54ch; position: relative; min-height: 128px; margin:auto auto 4em auto; border: 1px solid #999; border-radius: 16px; padding:8px; background: rgba(0,0,0,0.75);}\
 .status::before{ content: url('avatar.png'); position: absolute; right: 100%; }\
